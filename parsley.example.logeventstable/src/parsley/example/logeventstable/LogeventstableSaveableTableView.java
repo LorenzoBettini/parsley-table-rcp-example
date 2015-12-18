@@ -40,6 +40,8 @@ public class LogeventstableSaveableTableView extends org.eclipse.emf.parsley.vie
 			}
 
 			private void addNewGroup(LogEventQueue queue) {
+				// NOTE: Undo/Redo won't work since we don't use an EMF Command
+				// through an editing domain :)
 				LogeventFactory factory = LogeventFactory.eINSTANCE;
 				LogEventGroup newGroup = factory.createLogEventGroup();
 				newGroup.setName("Group " + ++counter);
