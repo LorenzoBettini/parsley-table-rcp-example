@@ -113,13 +113,22 @@ public interface LogeventPackage extends EPackage {
 	int LOG_EVENT_GROUP__EVENTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_EVENT_GROUP__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Log Event Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOG_EVENT_GROUP_FEATURE_COUNT = 1;
+	int LOG_EVENT_GROUP_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Log Event Group</em>' class.
@@ -150,13 +159,22 @@ public interface LogeventPackage extends EPackage {
 	int LOG_EVENT__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Group</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_EVENT__GROUP = 1;
+
+	/**
 	 * The number of structural features of the '<em>Log Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOG_EVENT_FEATURE_COUNT = 1;
+	int LOG_EVENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Log Event</em>' class.
@@ -211,6 +229,17 @@ public interface LogeventPackage extends EPackage {
 	EReference getLogEventGroup_Events();
 
 	/**
+	 * Returns the meta object for the attribute '{@link logevent.LogEventGroup#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see logevent.LogEventGroup#getName()
+	 * @see #getLogEventGroup()
+	 * @generated
+	 */
+	EAttribute getLogEventGroup_Name();
+
+	/**
 	 * Returns the meta object for class '{@link logevent.LogEvent <em>Log Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,6 +259,17 @@ public interface LogeventPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLogEvent_Name();
+
+	/**
+	 * Returns the meta object for the container reference '{@link logevent.LogEvent#getGroup <em>Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Group</em>'.
+	 * @see logevent.LogEvent#getGroup()
+	 * @see #getLogEvent()
+	 * @generated
+	 */
+	EReference getLogEvent_Group();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -291,6 +331,14 @@ public interface LogeventPackage extends EPackage {
 		EReference LOG_EVENT_GROUP__EVENTS = eINSTANCE.getLogEventGroup_Events();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG_EVENT_GROUP__NAME = eINSTANCE.getLogEventGroup_Name();
+
+		/**
 		 * The meta object literal for the '{@link logevent.impl.LogEventImpl <em>Log Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -307,6 +355,14 @@ public interface LogeventPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LOG_EVENT__NAME = eINSTANCE.getLogEvent_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOG_EVENT__GROUP = eINSTANCE.getLogEvent_Group();
 
 	}
 

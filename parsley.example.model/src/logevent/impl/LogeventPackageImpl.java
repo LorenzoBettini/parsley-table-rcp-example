@@ -145,6 +145,15 @@ public class LogeventPackageImpl extends EPackageImpl implements LogeventPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLogEventGroup_Name() {
+		return (EAttribute)logEventGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLogEvent() {
 		return logEventEClass;
 	}
@@ -156,6 +165,15 @@ public class LogeventPackageImpl extends EPackageImpl implements LogeventPackage
 	 */
 	public EAttribute getLogEvent_Name() {
 		return (EAttribute)logEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLogEvent_Group() {
+		return (EReference)logEventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -191,9 +209,11 @@ public class LogeventPackageImpl extends EPackageImpl implements LogeventPackage
 
 		logEventGroupEClass = createEClass(LOG_EVENT_GROUP);
 		createEReference(logEventGroupEClass, LOG_EVENT_GROUP__EVENTS);
+		createEAttribute(logEventGroupEClass, LOG_EVENT_GROUP__NAME);
 
 		logEventEClass = createEClass(LOG_EVENT);
 		createEAttribute(logEventEClass, LOG_EVENT__NAME);
+		createEReference(logEventEClass, LOG_EVENT__GROUP);
 	}
 
 	/**
@@ -230,10 +250,12 @@ public class LogeventPackageImpl extends EPackageImpl implements LogeventPackage
 		initEReference(getLogEventQueue_EventGroups(), this.getLogEventGroup(), null, "eventGroups", null, 0, -1, LogEventQueue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(logEventGroupEClass, LogEventGroup.class, "LogEventGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLogEventGroup_Events(), this.getLogEvent(), null, "events", null, 0, -1, LogEventGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLogEventGroup_Events(), this.getLogEvent(), this.getLogEvent_Group(), "events", null, 0, -1, LogEventGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogEventGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, LogEventGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(logEventEClass, LogEvent.class, "LogEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLogEvent_Name(), ecorePackage.getEString(), "name", null, 0, 1, LogEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLogEvent_Group(), this.getLogEventGroup(), this.getLogEventGroup_Events(), "group", null, 0, 1, LogEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
