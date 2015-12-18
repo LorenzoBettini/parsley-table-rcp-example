@@ -1,4 +1,7 @@
+import logevent.LogeventPackage
+import org.eclipse.emf.common.util.URI
 import parsley.example.logeventstable.LogeventstableSaveableTableView
+import logevent.LogeventFactory
 
 /* parsley.example.logeventstable Emf Parsley Dsl Module file */
 module parsley.example.logeventstable {
@@ -13,22 +16,30 @@ module parsley.example.logeventstable {
 	configurator {
 		eClass {
 			LogeventstableSaveableTableView -> {
-				// TODO return the EClass of objects to be shown
+				LogeventPackage.eINSTANCE.logEvent
 			}
 		}
 		resourceURI {
 			LogeventstableSaveableTableView -> {
-				// TODO create and return a org.eclipse.emf.common.util.URI
-				return null;
+				URI.createFileURI(
+					System.getProperty("user.home")
+						+ "/examples/logevent/My.logevent"
+				)
 			}
 		}
 	}
 	
 	resourceManager {
+		val factory = LogeventFactory.eINSTANCE
+		
 		initializeResource {
-			// Optional: initialize an empty Resource
-			// 'it' is of type Resource
-			// e.g., it.getContents += myFactory.createMyClass
+			contents += factory.createLogEventQueue => [
+				eventGroups += factory.createLogEventGroup => [
+					events += factory.createLogEvent => [name = "First"]
+					events += factory.createLogEvent => [name = "Second"]
+					events += factory.createLogEvent => [name = "Third"]
+				]
+			]
 		}
 	}
 }
